@@ -18,12 +18,11 @@ const getJSONData = () => {
     ]
   })
 
-  const headers = Object.keys(data[0])
-  const capitalizedHeaders = headers.map(header => header.toUpperCase())
+  const headers = Object.keys(data[0]).map(header => header.toUpperCase())
   
   const ss = SpreadsheetApp.getActiveSpreadsheet()
   const sh = ss.getSheetByName('Results')
 
-  sh.getRange(1, 1, 1, headers.length).setValues([capitalizedHeaders])
+  sh.getRange(1, 1, 1, headers.length).setValues([headers])
   sh.getRange(2, 1, users.length, users[0].length).setValues(users)
 }
